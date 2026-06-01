@@ -1,0 +1,14 @@
+
+PROJECT TITLE: AI Powered Crowd-Sourced FAQ Generation System
+
+Modules:
+1. User Module
+2. Admin Module
+3. FAQ Recommendation Engine
+4. NLP Similarity Detection
+
+Technology:
+Frontend: HTML/CSS
+Backend: Flask
+Database: MySQL
+ML: TF-IDF + Cosine Similarity

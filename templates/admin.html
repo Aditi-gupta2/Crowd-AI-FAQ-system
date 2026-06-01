@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Crowd FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+
+<div class="main-card">
+    <div class="card">
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-icon">F</div>
+            <span class="logo-text">CrowdFAQ</span>
+        </div>
+
+        <!-- Heading -->
+        <h1 class="heading">
+            <span>Add</span> New FAQ
+        </h1>
+        
+        <p class="subheading">
+            Enter a question and answer to add to the knowledge base.
+        </p>
+
+        <!-- Add FAQ Form -->
+        <form action="/add_faq" method="post">
+            <div class="search-input-wrapper">
+                <input 
+                    type="text" 
+                    name="question" 
+                    placeholder="Enter question..." 
+                    required
+                    style="padding-left: 24px;">
+            </div>
+            <div class="search-input-wrapper">
+                <input 
+                    type="text" 
+                    name="answer" 
+                    placeholder="Enter answer..." 
+                    required
+                    style="padding-left: 24px;">
+            </div>
+            <button type="submit" class="search-btn">
+                Add to Database
+            </button>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <!-- Back Link -->
+        <a href="/" class="admin-link">
+            ← Back to Home
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
