@@ -3,61 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crowd FAQ</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>CrowdFAQ</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="bg-pattern"></div>
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
 
-<div class="main-card">
-    <div class="card">
-        <!-- Logo -->
+    <nav>
         <div class="logo">
-            <div class="logo-icon">F</div>
-            <span class="logo-text">CrowdFAQ</span>
+            CrowdFAQ
         </div>
 
-        <!-- Heading -->
-        <h1 class="heading">
-            How can we <span>help</span> you?
-        </h1>
-
-        <!-- Search Form -->
-        <form action="/ask" method="post">
-            <div class="search-input-wrapper">
-                <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                </svg>
-                <input 
-                    type="text" 
-                    name="question" 
-                    placeholder="Type your question..." 
-                    required>
-            </div>
-            <button type="submit" class="search-btn">
-                Find Answer
-            </button>
-        </form>
-
-        <!-- Divider -->
-        <div class="divider">
-            <span>OR</span>
-        </div>
-
-        <!-- Admin Link -->
         <a href="/admin" class="admin-link">
-            Open Admin Panel
+            Admin Panel
         </a>
+    </nav>
 
-        <p class="footer-text">
-             Crowd FAQ System
-        </p>
-    </div>
-</div>
+    <main>
+
+        <div class="hero-card">
+
+            <h1>Find Answers Instantly</h1>
+
+            <p>
+                Search your knowledge base and discover relevant answers in seconds.
+            </p>
+
+            <form action="/ask" method="POST">
+
+                <input
+                    type="text"
+                    id="questionInput"
+                    name="question"
+                    placeholder="Ask your question..."
+                    required>
+
+                <button type="submit">
+                    Search
+                </button>
+
+            </form>
+
+            <div class="chips">
+
+                <span onclick="fillQuestion('How to reset password?')">
+                    Reset Password
+                </span>
+
+                <span onclick="fillQuestion('How to register account?')">
+                    Register Account
+                </span>
+
+                <span onclick="fillQuestion('How to contact support?')">
+                    Contact Support
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+<script>
+
+function fillQuestion(text){
+    document.getElementById("questionInput").value = text;
+}
+
+const placeholders = [
+    "How to reset password?",
+    "How to register account?",
+    "How to contact support?"
+];
+
+let i = 0;
+
+setInterval(() => {
+    document.getElementById("questionInput").placeholder =
+    placeholders[i];
+
+    i = (i + 1) % placeholders.length;
+}, 2500);
+
+</script>
 
 </body>
 </html>

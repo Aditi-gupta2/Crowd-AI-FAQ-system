@@ -3,66 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - Crowd FAQ</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Admin Dashboard | CrowdFAQ</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<div class="bg-pattern"></div>
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
 
-<div class="main-card">
-    <div class="card">
-        <!-- Logo -->
-        <div class="logo">
-            <div class="logo-icon">F</div>
-            <span class="logo-text">CrowdFAQ</span>
-        </div>
+<nav>
 
-        <!-- Heading -->
-        <h1 class="heading">
-            <span>Add</span> New FAQ
-        </h1>
-        
-        <p class="subheading">
-            Enter a question and answer to add to the knowledge base.
-        </p>
-
-        <!-- Add FAQ Form -->
-        <form action="/add_faq" method="post">
-            <div class="search-input-wrapper">
-                <input 
-                    type="text" 
-                    name="question" 
-                    placeholder="Enter question..." 
-                    required
-                    style="padding-left: 24px;">
-            </div>
-            <div class="search-input-wrapper">
-                <input 
-                    type="text" 
-                    name="answer" 
-                    placeholder="Enter answer..." 
-                    required
-                    style="padding-left: 24px;">
-            </div>
-            <button type="submit" class="search-btn">
-                Add to Database
-            </button>
-        </form>
-
-        <!-- Divider -->
-        <div class="divider">
-            <span>OR</span>
-        </div>
-
-        <!-- Back Link -->
-        <a href="/" class="admin-link">
-            ← Back to Home
-        </a>
+    <div class="logo">
+        CrowdFAQ
     </div>
+
+    <a href="/" class="admin-link">
+        Home
+    </a>
+
+</nav>
+
+<div class="dashboard">
+
+    <!-- LEFT SIDE -->
+
+    <div class="dashboard-left">
+
+        <div class="dashboard-card">
+
+            <h2>Add New FAQ</h2>
+
+            <form action="/add_faq" method="POST">
+
+                <input
+                    type="text"
+                    name="question"
+                    placeholder="Enter Question"
+                    required>
+
+                <textarea
+                    name="answer"
+                    placeholder="Enter Answer"
+                    required></textarea>
+
+                <button type="submit">
+                    Add FAQ
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="dashboard-right">
+
+        <div class="dashboard-card">
+
+            <h2>Stored FAQs</h2>
+
+            {% if faqs %}
+
+                {% for faq in faqs %}
+
+                <div class="faq-card">
+
+                    <h3>
+                        {{ faq.question }}
+                    </h3>
+
+                    <p>
+                        {{ faq.answer }}
+                    </p>
+
+                    <a href="/delete_faq/{{ loop.index0 }}"
+                       class="delete-btn">
+
+                        Delete FAQ
+
+                    </a>
+
+                </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p style="color:#cbd5e1;">
+                    No FAQs added yet.
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
 </div>
 
 </body>
